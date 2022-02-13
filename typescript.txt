@@ -1,0 +1,191 @@
+Script started on 2022-01-07 09:16:25-08:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ script -audo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ky
+[sudo] password for pourya: 
+Sorry, try again.
+[sudo] password for pourya: 
+*** Creating network
+*** Adding hosts:
+host1 host2 
+*** Adding switches:
+r1 s1 s2 
+*** Adding links:
+(host1, s1) (host2, s2) Traceback (most recent call last):
+  File "create_net1.py", line 53, in <module>
+    run()
+  File "create_net1.py", line 44, in run
+    net = Mininet(topo=SimpleOVSSwitch(), switch=OVSKernelSwitch, controller=None,link=TCLink)
+  File "/usr/lib/python2.7/dist-packages/mininet/net.py", line 172, in __init__
+    self.build()
+  File "/usr/lib/python2.7/dist-packages/mininet/net.py", line 444, in build
+    self.buildFromTopo( self.topo )
+  File "/usr/lib/python2.7/dist-packages/mininet/net.py", line 431, in buildFromTopo
+    self.addLink( **params )
+  File "/usr/lib/python2.7/dist-packages/mininet/net.py", line 366, in addLink
+    link = cls( node1, node2, **options )
+  File "/usr/lib/python2.7/dist-packages/mininet/link.py", line 559, in __init__
+    params2=params )
+  File "/usr/lib/python2.7/dist-packages/mininet/link.py", line 449, in __init__
+    node1, node2, deleteIntfs=False )
+  File "/usr/lib/python2.7/dist-packages/mininet/link.py", line 493, in makeIntfPair
+    deleteIntfs=deleteIntfs )
+  File "/usr/lib/python2.7/dist-packages/mininet/util.py", line 194, in makeIntfPair
+    ( intf1, intf2, cmdOutput ) )
+Exception: Error creating interface pair (s1-eth2,r1-eth1): RTNETLINK answers: File exists
+ 
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ sudo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccript -a[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cudo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmn -c[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_core lt-nox_core ovs-openflowd ovs-controller udpbwtest mnexec ivs 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_core lt-nox_core ovs-openflowd ovs-controller udpbwtest mnexec ivs 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --if-exists del-br r1 -- --if-exists del-br s1 -- --if-exists del-br s2
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+( ip link del r1-eth1;ip link del s1-eth2;ip link del s1-eth2;ip link del r1-eth1;ip link del r1-eth2;ip link del s2-eth2;ip link del s2-eth2;ip link del r1-eth2 ) 2> /dev/null
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ sudo mn -c-E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccript -a[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+Script started, file is typescript
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ script -audo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ky
+[sudo] password for pourya: 
+*** Creating network
+*** Adding hosts:
+host1 host2 
+*** Adding switches:
+r1 s1 s2 
+*** Adding links:
+(host1, s1) (host2, s2) (s1, r1) (s2, r1) 
+*** Configuring hosts
+host1 host2 
+*** Starting controller
+
+*** Starting 3 switches
+r1 s1 s2 ...
+*** Starting CLI:
+mininet> sh ovs-ofctl del-flows s1
+mininet> sh ovs-ofctl del-flows s2
+mininet> sh ovs-ofctl del-flows r1
+mininet> 
+mininet> sh ovs-ofctl add-flow s1 dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,actions=output:2
+mininet> sh ovs-ofctl add-flow s1 dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,actions=output:1
+mininet> sh ovs-ofctl add-flow s2 dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,actions=output:1
+mininet> sh ovs-ofctl add-flow s2 dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,actions=output:2
+mininet> 
+mininet> sh ovs-ofctl add-flow s1 dl_type=0x806,nw_proto=1,actions=flood
+mininet> sh ovs-ofctl add-flow s2 dl_type=0x806,nw_proto=1,actions=flood
+mininet> 
+mininet> sh ovs-ofctl add-flow r1 priority=650,ip,nw_src=10.0.1.0/24,actions=mod_nw_dst:10.0.2.1,dec_ttl,output:2
+mininet> sh ovs-ofctl add-flow r1 priority=650,ip,nw_src=10.0.2.0/24,actions=mod_nw_dst:10.0.1.1,dec_ttl,output:1
+mininet> sh ovs-ofctl add-flow r1 priority=1,arp,actions=flood
+mininet> host1 ping -3 [1@c[C[C[C host2
+ping: c-3: Temporary failure in name resolution
+mininet> host1 ping c-3  host2[C[C[C[C[C[C[C[C[C[C[C[C[1P[1@-
+PING 10.0.2.1 (10.0.2.1) 56(84) bytes of data.
+64 bytes from 10.0.2.1: icmp_seq=1 ttl=63 time=5.56 ms
+64 bytes from 10.0.2.1: icmp_seq=2 ttl=63 time=0.071 ms
+64 bytes from 10.0.2.1: icmp_seq=3 ttl=63 time=0.074 ms
+
+--- 10.0.2.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2032ms
+rtt min/avg/max/mdev = 0.071/1.900/5.555/2.584 ms
+mininet> host1 ping -c3  host2[K1[1P[1@2
+PING 10.0.1.1 (10.0.1.1) 56(84) bytes of data.
+64 bytes from 10.0.1.1: icmp_seq=1 ttl=63 time=0.085 ms
+64 bytes from 10.0.1.1: icmp_seq=2 ttl=63 time=0.125 ms
+64 bytes from 10.0.1.1: icmp_seq=3 ttl=63 time=0.054 ms
+
+--- 10.0.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2037ms
+rtt min/avg/max/mdev = 0.054/0.088/0.125/0.029 ms
+mininet> exit
+*** Stopping 0 controllers
+
+*** Stopping 4 links
+....
+*** Stopping 3 switches
+r1 s1 s2 
+*** Stopping 2 hosts
+host1 host2 
+*** Done
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ sudo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccript -a[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cudo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CScript started on 2022-01-07 09:16:49-08:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ script -audo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ky
+[sudo] password for pourya: 
+*** Creating network
+*** Adding hosts:
+host1 host2 
+*** Adding switches:
+r1 s1 s2 
+*** Adding links:
+(host1, s1) (host2, s2) (s1, r1) (s2, r1) 
+*** Configuring hosts
+host1 host2 
+*** Starting controller
+
+*** Starting 3 switches
+r1 s1 s2 ...
+*** Starting CLI:
+mininet> sh ovs-ofctl del-flows s1
+mininet> sh ovs-ofctl del-flows s2
+mininet> sh ovs-ofctl del-flows r1
+mininet> 
+mininet> sh ovs-ofctl add-flow s1 dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,actions=output:2
+mininet> sh ovs-ofctl add-flow s1 dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,actions=output:1
+mininet> sh ovs-ofctl add-flow s2 dl_src=00:00:00:00:00:01,dl_dst=00:00:00:00:00:02,actions=output:1
+mininet> sh ovs-ofctl add-flow s2 dl_src=00:00:00:00:00:02,dl_dst=00:00:00:00:00:01,actions=output:2
+mininet> 
+mininet> sh ovs-ofctl add-flow s1 dl_type=0x806,nw_proto=1,actions=flood
+mininet> sh ovs-ofctl add-flow s2 dl_type=0x806,nw_proto=1,actions=flood
+mininet> 
+mininet> sh ovs-ofctl add-flow r1 priority=650,ip,nw_src=10.0.1.0/24,actions=mod_nw_dst:10.0.2.1,dec_ttl,output:2
+mininet> sh ovs-ofctl add-flow r1 priority=650,ip,nw_src=10.0.2.0/24,actions=mod_nw_dst:10.0.1.1,dec_ttl,output:1
+mininet> sh ovs-ofctl add-flow r1 priority=1,arp,actions=flood
+mininet> host1 ping -3 [1@c[C[C[C host2
+ping: c-3: Temporary failure in name resolution
+mininet> host1 ping c-3  host2[C[C[C[C[C[C[C[C[C[C[C[C[1P[1@-
+PING 10.0.2.1 (10.0.2.1) 56(84) bytes of data.
+64 bytes from 10.0.2.1: icmp_seq=1 ttl=63 time=5.56 ms
+64 bytes from 10.0.2.1: icmp_seq=2 ttl=63 time=0.071 ms
+64 bytes from 10.0.2.1: icmp_seq=3 ttl=63 time=0.074 ms
+
+--- 10.0.2.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2032ms
+rtt min/avg/max/mdev = 0.071/1.900/5.555/2.584 ms
+mininet> host1 ping -c3  host2[K1[1P[1@2
+PING 10.0.1.1 (10.0.1.1) 56(84) bytes of data.
+64 bytes from 10.0.1.1: icmp_seq=1 ttl=63 time=0.085 ms
+64 bytes from 10.0.1.1: icmp_seq=2 ttl=63 time=0.125 ms
+64 bytes from 10.0.1.1: icmp_seq=3 ttl=63 time=0.054 ms
+
+--- 10.0.1.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2037ms
+rtt min/avg/max/mdev = 0.054/0.088/0.125/0.029 ms
+mininet> exit
+*** Stopping 0 controllers
+
+*** Stopping 4 links
+....
+*** Stopping 3 switches
+r1 s1 s2 
+*** Stopping 2 hosts
+host1 host2 
+*** Done
+]0;pourya@ubuntu: ~/PycharmProjects/pythonProject1[01;32mpourya@ubuntu[00m:[01;34m~/PycharmProjects/pythonProject1[00m$ sudo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccript -a[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cudo -E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmn -c[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-E python2.7 create_net1.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmn -c[K
